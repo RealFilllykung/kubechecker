@@ -30,8 +30,7 @@ if loopCheckMode == "1":
 				index = index + 1
 				continue
 			line = byteLine.decode("utf-8")
-			lineSplit = line.split(" ")
-			options.append(lineSplit[0])
+			options.append(line)
 		index = 1
 		for option in options:
 			print(str(index) + ") "  + option)
