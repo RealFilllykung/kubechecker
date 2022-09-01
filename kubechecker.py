@@ -66,11 +66,13 @@ print("Available mode: ")
 print("1. Logs")
 print("2. Describe")
 mode = input("Chosen mode: ")
-chosenMode = int(answer)
+chosenMode = int(mode)
 
 if chosenMode == 1:
+	print("Gathering log of the pod " + options[chosenAnswer])
 	osArgs = "kubectl logs -f " + options[chosenAnswer] + " -n xom-logistics-dev"
 	os.system(osArgs)
 elif chosenMode == 2:
+	print("Gathering describe of the pod " + options[chosenAnswer])
 	osArgs = "kubectl describe pod " + options[chosenAnswer] + " -n xom-logistics-dev"
 	os.system(osArgs)
