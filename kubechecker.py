@@ -16,11 +16,10 @@ print("Loop checking mode: ")
 print("1. Loop check")
 print("2. Other mode")
 loopCheckMode = input("Chosen option: ")
-SLEEP_TIME = 5
+SLEEP_TIME = 1
 
 if loopCheckMode == "1":
 	while True:
-		print("Refreshing kube list")
 		result = subprocess.run(["kubectl","get","pods","-n","xom-logistics-dev"],stdout=subprocess.PIPE)
 		lines = result.stdout.splitlines()
 		index = 0
@@ -32,12 +31,12 @@ if loopCheckMode == "1":
 			line = byteLine.decode("utf-8")
 			options.append(line)
 		index = 1
+		clearScreen()
+		print("Refreshing kube list")
 		for option in options:
 			print(str(index) + ") "  + option)
 			index = index + 1
 		time.sleep(SLEEP_TIME)
-		clearScreen()
-
 
 print("Gathering pods list...")
 result = subprocess.run(["kubectl","get","pods","-n","xom-logistics-dev"],stdout=subprocess.PIPE)
